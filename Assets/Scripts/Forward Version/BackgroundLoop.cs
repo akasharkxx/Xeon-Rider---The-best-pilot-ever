@@ -28,6 +28,9 @@ public class BackgroundLoop : MonoBehaviour
         {
             GameObject c = Instantiate(clone) as GameObject;
             c.transform.SetParent(childObject.transform);
+            c.transform.position = new Vector3(childObject.transform.position.x, objectHeight * i, childObject.transform.position.z);
+            c.name = childObject.name + i;
         }
+        Destroy(clone);
     }
 }
