@@ -5,6 +5,7 @@ public class PlayerTouchController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float smoothness;
     [SerializeField] private float touchDistance;
+    [SerializeField] private float slowDownMulitplier;
 
     private Vector2 refVelocity;
     private bool touchStart, isInTouchDistance;
@@ -33,6 +34,7 @@ public class PlayerTouchController : MonoBehaviour
             {
                 isInTouchDistance = false;
             }
+            Time.timeScale = 1.0f;
         }
         if (Input.GetMouseButton(0) && isInTouchDistance)
         {
@@ -43,6 +45,7 @@ public class PlayerTouchController : MonoBehaviour
         {
             touchStart = false;
             isInTouchDistance = false;
+            Time.timeScale = slowDownMulitplier;
         }
     }
 

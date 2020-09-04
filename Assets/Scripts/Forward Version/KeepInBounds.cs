@@ -7,6 +7,7 @@ public class KeepInBounds : MonoBehaviour
     //Screen bounds variables
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject player;
+    [SerializeField] private float extraMove;
 
     private Vector2 screenBounds;
     private float objectWidth;
@@ -25,6 +26,6 @@ public class KeepInBounds : MonoBehaviour
         viewPosition.x = Mathf.Clamp(viewPosition.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
         viewPosition.y = Mathf.Clamp(viewPosition.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
         player.transform.position = viewPosition;
-        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
+        screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width + extraMove, Screen.height, mainCamera.transform.position.z));
     }
 }
